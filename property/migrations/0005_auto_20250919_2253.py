@@ -4,7 +4,7 @@ from django.db import migrations
 
 def set_new_building_based_on_year(apps, schema_editor):
     Flat = apps.get_model('property','Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.iterator():
         if flat.construction_year is not None:
             flat.new_building = (flat.construction_year >= 2015)
         else:
@@ -20,3 +20,4 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(set_new_building_based_on_year)
     ]
+
