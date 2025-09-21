@@ -59,7 +59,7 @@ class Flat(models.Model):
 
 
 class Complaint(models.Model):
-    user = models.ForeignKey(
+    complainer = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         null=True,
