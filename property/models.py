@@ -83,5 +83,5 @@ class Owner(models.Model):
         Flat,
         verbose_name='Квартиры в собственности',
         blank=True,
-        related_name='flat_owners'
+        related_name='owners'
     )
