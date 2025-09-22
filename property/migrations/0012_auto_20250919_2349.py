@@ -6,7 +6,7 @@ def link_flats_to_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.iterator():
         owner, _ = Owner.objects.get_or_create(
             full_name=flat.owner,
             phonenumber=flat.owners_phonenumber,
@@ -23,3 +23,4 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(link_flats_to_owners, reverse_code=migrations.RunPython.noop),
     ]
+
